@@ -6,6 +6,7 @@
     "dev:api": "nodemon api/server.js",
     "dev:worker": "nodemon worker/worker.js",
     "dev": "npm-run-all --parallel dev:api dev:worker",
+    "db:init": "\"C:\\\\Program Files\\\\PostgreSQL\\\\18\\\\bin\\\\psql.exe\" -U postgres -d crm_intelligence -f scripts/init_db.sql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

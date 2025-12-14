@@ -27,6 +27,19 @@ app.get("/healthz", (req, res) => {
   res.status(200).json({ status: "API running" });
 });
 
+const pool = require("../config/db"); // adjust if your db.js is inside config
+
+app.get("/db-test", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT NOW() as now");
+    res.json({ ok: true, now: result.rows[0].now });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+
 // TODO: Stripe webhooks
 // app.post("/webhooks/stripe", ...)
 
